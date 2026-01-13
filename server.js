@@ -6,7 +6,8 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 
-app.use(express.static("public"));
+// Serve files from root directory
+app.use(express.static(__dirname));
 
 /* ================= DATA ================= */
 
@@ -25,7 +26,6 @@ const NATO = [
   // reserved/admin
   "CONTROL"
 ];
-
 
 let users = [];
 let mutedIPs = {}; // ip -> unmute timestamp
